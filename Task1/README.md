@@ -1,4 +1,5 @@
 # Task1 - Downloader
+### The requirements:
 >https://ru.wikipedia.org/wiki/CURL
 >
 >https://curl.se/libcurl/c/libcurl-easy.html
