@@ -8,7 +8,14 @@
 
 #include <curl/curl.h>
 
-class Downloader {
+ class CurlGlobalInit
+ {
+    protected:
+    CurlGlobalInit() { curl_global_init(CURL_GLOBAL_ALL);  }
+    ~CurlGlobalInit() { curl_global_cleanup(); }
+};
+
+class Downloader: private CurlGlobalInit {
     public:
     Downloader();
     Downloader(const std::string& url,const std::string& path_to_save);
@@ -23,8 +30,7 @@ class Downloader {
     std::string m_url = "";
     std::string m_file_name = "";
 
-    handle_t* m_handle = nullptr;
-    file_t* m_file = nullptr;
+    handle_t m_handle{curl_easy_init(), &curl_easy_cleanup};
 
     static size_t write_data(void *ptr, size_t size, size_t nmemb, FILE *stream) ;
 };
