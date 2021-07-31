@@ -1,4 +1,4 @@
-# Producer–Consumer with Semaphores
+# Task2 - Producer–Consumer with Semaphores
 ## Build and run
 ### Build:
 > `cmake . && make`
