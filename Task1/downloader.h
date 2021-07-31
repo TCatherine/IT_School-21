@@ -15,7 +15,7 @@
     ~CurlGlobalInit() { curl_global_cleanup(); }
 };
 
-class Downloader: private CurlGlobalInit {
+class Downloader {
     public:
     Downloader();
     Downloader(const std::string& url,const std::string& path_to_save);
@@ -24,6 +24,7 @@ class Downloader: private CurlGlobalInit {
     void get_file(const std::string& url,const std::string& path_to_save);
 
     private:
+		static CurlGlobalInit m_curl_global_init;
     using handle_t = std::unique_ptr<CURL, decltype(&curl_easy_cleanup)> ;
     using file_t = std::unique_ptr<FILE, std::function<void(FILE*)>>;
 
