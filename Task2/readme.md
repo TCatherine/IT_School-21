@@ -26,7 +26,7 @@ signal(full_semapthore)
 Consumer:
 ```
 wait(full_semapthore)
-insert_items
+remove_items
 signal(empty_semapthore)
 ```
 ## Usefull command
