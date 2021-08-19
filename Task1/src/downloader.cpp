@@ -1,21 +1,14 @@
 #include "downloader.h"
 
-Downloader::Downloader() {
-}
-
-Downloader::Downloader(const std::string& url, const std::string& path_to_save) : Downloader(){
+Downloader::Downloader(const std::string& url, const std::string& path_to_save) {
     get_file(url, path_to_save);
 }
 
-Downloader::~Downloader() {}
-
 void Downloader::get_file(const std::string& url, const std::string& path_to_save){
-    m_url = url;
-    m_file_name = path_to_save;
 
-    file_t m_file(std::fopen(m_file_name.c_str(), "w+"),[](FILE* f) { std::fclose(f); });
+    file_t m_file(std::fopen(path_to_save.c_str(), "w+"),[](FILE* f) { std::fclose(f); });
 
-    curl_easy_setopt(m_handle.get(), CURLOPT_URL, m_url.c_str());
+    curl_easy_setopt(m_handle.get(), CURLOPT_URL, url.c_str());
     curl_easy_setopt(m_handle.get(), CURLOPT_WRITEFUNCTION, Downloader::write_data);
     curl_easy_setopt(m_handle.get(), CURLOPT_WRITEDATA, m_file.get());
 

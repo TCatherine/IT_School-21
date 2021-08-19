@@ -1,16 +1,18 @@
 # Task2 - Producer–Consumer with Semaphores
 ## Build and run
 ### Build:
-> `cmake . && make`
+> `cmake -B./build/ && cmake --build ./build/ `
 ### Run:
 >First terminal: `./producer`
 >
 >Second terminal: `./consumer`
 ### Interrupt:
 >`ctrl + c`
+### Clear
+> `rm -r build && rm consumer && rm producer` 
 ## Idea
 The producer-consumer pattern is implemented. Synchronization is implemented using two semaphores: `empty_semapthore` and `full_semaphore`.
-### Schema:
+### Schema: 
 Init: 
 ```
 empty_semapthore = 1 full_semapthore = 0

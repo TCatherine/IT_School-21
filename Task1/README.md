@@ -1,5 +1,11 @@
 # Task1 - Downloader
-### The requirements:
+## Build
+>`cmake -B./build/ && cmake --build ./build/`
+## Clean
+>`rm -r build && rm Task1`
+## Run
+> `./Task1`
+## The requirements:
 >https://ru.wikipedia.org/wiki/CURL
 >
 >https://curl.se/libcurl/c/libcurl-easy.html
@@ -13,7 +19,7 @@
 >Не пишите в стиле C, для владения ресурсом CURL используйте std::unique_ptr с переопределенным deleter'ом.
 >
 >std::unique_ptr<CURL, decltype(&curl_easy_cleanup)> curl{curl_easy_init(), &curl_easy_cleanup};
->Напишите класс, который содержит объект типа std::unique_ptr<CURL, decltype(&curl_easy_cleanup)> с методом для скачивания файла по URL.
+>Напишите класс, который содержит объект типа std::unique_ptr<CURL, decltype(&**curl_easy_cleanup**)> с методом для скачивания файла по URL.
 >
 >В дальнейшем эта наработка будет использоваться в других заданиях, например, в задании по MNP.
 >
